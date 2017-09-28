@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebAppCinema.Models.Filme>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Create", new { }, new { @Class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duracao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duracao)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.FilmeId }, new { @Class = "btn btn-warning" }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.FilmeId }, new { @Class = "btn btn-info" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FilmeId }, new { @Class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
